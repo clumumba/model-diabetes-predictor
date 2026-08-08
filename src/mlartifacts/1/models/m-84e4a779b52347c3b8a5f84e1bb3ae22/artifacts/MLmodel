@@ -1,0 +1,26 @@
+artifact_path: mlflow-artifacts:/1/models/m-84e4a779b52347c3b8a5f84e1bb3ae22/artifacts
+flavors:
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.15.1
+model_id: m-84e4a779b52347c3b8a5f84e1bb3ae22
+model_size_bytes: 319
+model_uuid: m-84e4a779b52347c3b8a5f84e1bb3ae22
+prompts: null
+run_id: b55fe5b83374438e93ff77a26441f6f1
+signature:
+  inputs: '[{"type": "long", "name": "Pregnancies", "required": true}, {"type": "long",
+    "name": "Glucose", "required": true}, {"type": "long", "name": "BloodPressure",
+    "required": true}, {"type": "long", "name": "SkinThickness", "required": true},
+    {"type": "long", "name": "Insulin", "required": true}, {"type": "double", "name":
+    "BMI", "required": true}, {"type": "double", "name": "DiabetesPedigreeFunction",
+    "required": true}, {"type": "long", "name": "Age", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-08-08 00:13:19.793995'

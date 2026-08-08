@@ -1,0 +1,29 @@
+preprocess:
+    input: data/raw/data.csv
+    output: data/processed/data.csv
+    out_path: data/processed/mboko.csv
+train:
+    data_path: data/processed/data.csv
+    target_column: Outcome
+    test_size: 0.20
+    random_state: 42
+    model_params:
+        n_estimators: 100
+        criterion: gini
+        max_depth: null
+        min_samples_split: 2
+        min_samples_leaf: 1
+        max_features: sqrt
+        bootstrap: true
+        random_state: 42
+        n_jobs: -1
+    model_params1:
+        n_estimators: [100, 200]
+        criterion: [gini, entropy]
+        max_depth: [null, 5, 10]
+        min_samples_split: [2, 5]
+        min_samples_leaf: [1, 2]
+        max_features: [sqrt, log2]
+        bootstrap: [true, false]
+        random_state: [42]
+        n_jobs: [-1]
