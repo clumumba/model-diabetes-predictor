@@ -95,7 +95,7 @@ class ModelTrainer:
             skops_trusted_types=TRUSTED_SKOPS_TYPES,
         )
         os.makedirs(os.path.join(_root, params["models"]), exist_ok=True)
-        with open(os.path.join(_root, params["models"], "model.pkl"), "wb") as f:
+        with open(os.path.join(_root, params["models"]), "wb") as f:
             pickle.dump(model_to_log, f)
 
         return artifact_path
@@ -106,7 +106,6 @@ if __name__ == "__main__":
     X,y = trainer.load_data(params['data_path'])
     X_test, y_test, predictions = trainer.train(X, y)
     metrics = trainer.evaluate(y_test, predictions)
-    # trainer.save_model(artifact_path=params.get("artifact_path", "model"))
 
     with mlflow.start_run():
         mlflow.log_metric("accuracy", metrics["accuracy"])
