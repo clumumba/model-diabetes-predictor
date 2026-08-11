@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 import pandas as pd
-import yaml
+import yaml, os, pickle
 from pathlib import Path
 from dotenv import load_dotenv
 from urllib.parse import urlparse
@@ -94,14 +94,19 @@ class ModelTrainer:
             registered_model_name="insulin_model",
             skops_trusted_types=TRUSTED_SKOPS_TYPES,
         )
+        os.makedirs(os.path.join(_root, params["models"]), exist_ok=True)
+        with open(os.path.join(_root, params["models"], "model.pkl"), "wb") as f:
+            pickle.dump(model_to_log, f)
+
         return artifact_path
+
 
 if __name__ == "__main__":
     trainer = ModelTrainer(params)
     X,y = trainer.load_data(params['data_path'])
     X_test, y_test, predictions = trainer.train(X, y)
     metrics = trainer.evaluate(y_test, predictions)
-    trainer.save_model(artifact_path=params.get("artifact_path", "model"))
+    # trainer.save_model(artifact_path=params.get("artifact_path", "model"))
 
     with mlflow.start_run():
         mlflow.log_metric("accuracy", metrics["accuracy"])

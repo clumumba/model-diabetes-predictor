@@ -6,7 +6,9 @@ train:
     data_path: data/processed/data.csv
     target_column: Outcome
     test_size: 0.20
+    cv: 3
     random_state: 42
+    models: models
     model_params:
         n_estimators: 100
         criterion: gini

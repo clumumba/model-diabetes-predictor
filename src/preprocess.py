@@ -22,5 +22,4 @@ def preprocess_data(data_path):
     return df
 
 if __name__ == "__main__":
-    preprocess_data(params['input'])
-    
+    preprocess_data(params['input'])    
