@@ -90,7 +90,7 @@ class ModelTrainer:
         log_model(
             sk_model=model_to_log,
             artifact_path=artifact_path,
-            signature=signature,
+            signature=signature, #type: ignore
             registered_model_name="insulin_model",
             skops_trusted_types=TRUSTED_SKOPS_TYPES,
         )
